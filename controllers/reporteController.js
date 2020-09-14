@@ -6,18 +6,18 @@ exports.crearQr = (req, res) => {
     if(!errors.isEmpty()){
         return res.status(400).json({ errores: errors.array()})
     }
-    
+    console.log('si se pusooooo')
 
 }
 
 exports.crearToken = (req, res) => {
         
         const payload = {
-            valido: true
+            valido: 'permiso valido'
         }
 
         jwt.sign(payload, process.env.SECRET, {
-            expiresIn: 30
+            expiresIn: 300
         }, (error, token) => {
             if(error) throw error
 
