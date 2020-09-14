@@ -11,4 +11,7 @@ router.post('/', [
 ],
 reporteController.crearQr)
 
+//crear Qr
+router.get('/token', reporteController.crearToken)
+
 module.exports = router

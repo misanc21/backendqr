@@ -6,6 +6,8 @@ app.use(express.json({extended: true}))
 
 const port = process.env.port || 4000;
 
+require('dotenv').config({path: 'variables.env'})
+
 app.use('/api/reporte', require('./routes/reporte'));
 
 app.listen(port,  () => {
