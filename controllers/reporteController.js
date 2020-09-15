@@ -12,7 +12,6 @@ exports.crearQr = async (req, res) => {
 
     const {cantidad, fecha, id} = req.body
     try {
-        res.header("Access-Control-Allow-Origin", "*");
         const str = `${cantidad} - ${fecha} - ${id}`
         const qr = await QRCode.toDataURL(str)
         
@@ -105,12 +104,10 @@ exports.crearQr = async (req, res) => {
 }
 
 exports.sendFile = (re, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     res.sendFile(path.join(__dirname,'../pdfReports/reporte.pdf'))
 }
 
 exports.crearToken = (req, res) => {
-        res.header("Access-Control-Allow-Origin", "*");
         
         const payload = {
             valido: 'permiso valido'
