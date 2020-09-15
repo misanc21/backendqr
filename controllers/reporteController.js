@@ -114,7 +114,7 @@ exports.crearToken = (req, res) => {
         }
 
         jwt.sign(payload, process.env.SECRET, {
-            expiresIn: 9000
+            expiresIn: 900
         }, (error, token) => {
             if(error) throw error
 
