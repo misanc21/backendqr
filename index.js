@@ -4,10 +4,8 @@ const cors = require('cors')
 const app = express()
 
 app.use(express.json({extended: true}))
-var corsOptions = {
-    origin: ["https://elated-fermat-32fd73.netlify.app/", "http://localhost:3000"]
-  }
-app.use(cors(corsOptions))
+
+app.use(cors())
 
 const port = process.env.port || 4000;
 

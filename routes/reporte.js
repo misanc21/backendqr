@@ -3,6 +3,7 @@ const router = express.Router()
 const reporteController = require('../controllers/reporteController')
 const {check} = require('express-validator')
 const auth = require('../middleware/auth')
+const allow = require('../middleware/allow')
 
 //crear Qr
 router.post('/', [
@@ -17,8 +18,7 @@ router.get('/',
     auth,
     reporteController.sendFile)
 
-//crear Qr
-router.get('/token', reporteController.crearToken)
+router.get('/token', allow, reporteController.crearToken)
 
 
 module.exports = router
