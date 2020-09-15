@@ -104,7 +104,7 @@ exports.crearQr = async (req, res) => {
 }
 
 exports.sendFile = (re, res) => {
-    res.sendFile(path.join(__dirname,'../pdfReports/reporte.pdf'))
+    res.sendFile(path.join(__dirname,'../PdfReports/reporte.pdf'))
 }
 
 exports.crearToken = (req, res) => {
