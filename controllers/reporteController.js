@@ -2,6 +2,7 @@ const {validationResult} = require('express-validator')
 const jwt = require('jsonwebtoken')
 const pdf = require('html-pdf')
 var QRCode = require('qrcode')
+const path = require('path');
 
 exports.crearQr = async (req, res) => {
     const errors = validationResult(req)
@@ -100,6 +101,10 @@ exports.crearQr = async (req, res) => {
     }
     
 
+}
+
+exports.sendFile = (re, res) => {
+    res.sendFile(path.join(__dirname,'../pdfReports/reporte.pdf'))
 }
 
 exports.crearToken = (req, res) => {

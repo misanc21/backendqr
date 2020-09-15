@@ -13,6 +13,10 @@ router.post('/', [
 auth,
 reporteController.crearQr)
 
+router.get('/',
+    auth,
+    reporteController.sendFile)
+
 //crear Qr
 router.get('/token', reporteController.crearToken)
 
