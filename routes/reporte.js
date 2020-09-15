@@ -16,13 +16,5 @@ reporteController.crearQr)
 //crear Qr
 router.get('/token', reporteController.crearToken)
 
-//crear PDF
-router.post('/pdf', [
-    check('cantidad', 'la cantidad es requerida').not().isEmpty(),
-    check('fecha', 'la fecha es requerida').not().isEmpty(),
-    check('id', 'el id es requerido').not().isEmpty(),
-   ],
-   auth,
-   reporteController.crearPDF)
 
 module.exports = router

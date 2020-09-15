@@ -116,27 +116,3 @@ exports.crearToken = (req, res) => {
             res.json(({token}))
         })
 }
-
-exports.crearPDF = (req, res) => {
-    const errors = validationResult(req)
-    if(!errors.isEmpty()){
-        return res.status(400).json({ errores: errors.array()})
-    }
-
-    const {cantidad, fecha, id} = req.body
-
-    try {
-        pdf.create(contenido, options).toFile(`PdfReports/reporte.pdf`, function(err, res) {
-            if (err){
-                console.log(err);
-            } else {
-                console.log(res);
-            }
-        })
-        res.json('pdf generado')
-        
-    } catch (error) {
-        console.log(error)
-        res.status(400).send('Hubo un error')
-    }
-}
