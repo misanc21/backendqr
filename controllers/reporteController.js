@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const pdf = require('html-pdf')
 var QRCode = require('qrcode')
 const path = require('path');
+const nodemailer = require('nodemailer')
 
 exports.crearQr = async (req, res) => {
     const errors = validationResult(req)
@@ -120,4 +121,35 @@ exports.crearToken = (req, res) => {
 
             res.json(({token}))
         })
+}
+
+
+
+exports.sendEmail = (req, res) => {
+    const transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'portfolioemailm21@gmail.com',
+            pass: 'portfoliom21'
+        }
+    })
+    const {message, email} = req.body
+    var mailOptions = {
+        from: email,
+        to: 'misanc21@gmail.com',
+        subject: 'Nuevo correo de tu portafolio',
+        text: `${email} - ${message}`
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error){
+            console.log(error);
+            res.send(500, err.message);
+        } else {
+            res.status(200).json({'emailsend':'true'});
+        }
+    });
+    
+    
+
 }

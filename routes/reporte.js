@@ -13,6 +13,9 @@ router.post('/', [
 auth,
 reporteController.crearQr)
 
+router.post('/email',
+   reporteController.sendEmail)
+
 router.get('/',
     auth,
     reporteController.sendFile)
